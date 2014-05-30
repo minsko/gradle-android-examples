@@ -4,7 +4,7 @@ buildscript {
     }
     
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.3'
+        classpath 'com.android.tools.build:gradle:0.10.4'
     }
 }
 
@@ -20,7 +20,7 @@ dependencies {
 
 android {
     compileSdkVersion 18
-    buildToolsVersion '18.1.0'
+    buildToolsVersion '19.1.0'
     
     buildTypes {
         releaseProguard.initWith(buildTypes.release)
@@ -32,5 +32,5 @@ android {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
+    gradleVersion = '1.12'
 }
