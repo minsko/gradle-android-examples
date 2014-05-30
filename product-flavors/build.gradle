@@ -4,7 +4,7 @@ buildscript {
     }
     
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.3'
+        classpath 'com.android.tools.build:gradle:0.10.4'
     }
 }
 
@@ -12,20 +12,25 @@ apply plugin: 'android'
 
 android {
     compileSdkVersion 18
-    buildToolsVersion '18.1.0'
+    buildToolsVersion '19.1.0'
     
     productFlavors {
         free {
-            buildConfig 'public final static org.gradle.examples.android.MonetizationType monetizationType = org.gradle.examples.android.MonetizationType.FREE;'
+            buildConfigField "org.gradle.examples.android.MonetizationType",  "monetizationType",
+			"org.gradle.examples.android.MonetizationType.FREE"
             versionCode 20
         }
 
         pro {
-            buildConfig 'public final static org.gradle.examples.android.MonetizationType monetizationType = org.gradle.examples.android.MonetizationType.PRO;'        
+            buildConfigField "org.gradle.examples.android.MonetizationType", "monetizationType",  "org.gradle.examples.android.MonetizationType.PRO"       
             minSdkVersion 10
             targetSdkVersion 10
         }
     }
+	packagingOptions {
+		exclude 'META-INF/LICENSE.txt'
+		exclude 'META-INF/NOTICE.txt'
+	}
 }
 
 repositories {
@@ -38,5 +43,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
+    gradleVersion = '1.12'
 }
